@@ -779,12 +779,12 @@ export default function Portfolio() {
                     </CardHeader>
                     <CardContent className="text-center">
                       <div className="flex justify-center items-center space-x-4">
-                        <Badge
+                        {/* <Badge
                           variant="outline"
                           className={`text-${edu.color}-600 border-${edu.color}-600 text-lg px-3 py-1`}
                         >
                           GPA: {edu.gpa}
-                        </Badge>
+                        </Badge> */}
                         <motion.div
                           animate={{ rotate: [0, 10, -10, 0] }}
                           transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY }}
