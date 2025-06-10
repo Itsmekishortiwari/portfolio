@@ -27,6 +27,7 @@ import {
   Facebook,
   MessageCircle,
   ExternalLink,
+  Map,
 } from "lucide-react"
 
 const fadeInUp = {
@@ -59,12 +60,12 @@ const toolCategories = [
   {
     title: "QA Expertise",
     icon: TestTube,
-    color: "blue",
+    color: "black",
     tools: [
-      { name: "Manual Testing", logo: "/placeholder.svg?height=40&width=40" },
-      { name: "Automation Testing", logo: "/placeholder.svg?height=40&width=40" },
-      { name: "Performance Testing", logo: "/placeholder.svg?height=40&width=40" },
-      { name: "API Testing", logo: "/placeholder.svg?height=40&width=40" },
+      { name: "Manual Testing", logo: "logo/manual.png?height=40&width=40" },
+      { name: "Automation Testing", logo: "/logo/automation_testing.png?height=40&width=40" },
+      { name: "Performance Testing", logo: "/logo/performance.png?height=40&width=40" },
+      { name: "API Testing", logo: "/logo/api.png?height=50&width=50" },
     ],
   },
   {
@@ -72,10 +73,10 @@ const toolCategories = [
     icon: Code,
     color: "green",
     tools: [
-      { name: "Selenium", logo: "/placeholder.svg?height=40&width=40" },
-      { name: "Cypress", logo: "/placeholder.svg?height=40&width=40" },
-      { name: "Python", logo: "/placeholder.svg?height=40&width=40" },
-      { name: "JMeter", logo: "/placeholder.svg?height=40&width=40" },
+      { name: "Selenium", logo: "/logo/selenium.png?height=40&width=40" },
+      { name: "Cypress", logo: "/logo/cypress.png?height=40&width=40" },
+      { name: "Python", logo: "/logo/python.png?height=40&width=40" },
+      { name: "JMeter", logo: "/logo/jmeter.avif?height=40&width=40" },
     ],
   },
   {
@@ -83,10 +84,10 @@ const toolCategories = [
     icon: Zap,
     color: "purple",
     tools: [
-      { name: "GitHub", logo: "/placeholder.svg?height=40&width=40" },
-      { name: "Postman", logo: "/placeholder.svg?height=40&width=40" },
-      { name: "Google Sheets", logo: "/placeholder.svg?height=40&width=40" },
-      { name: "VS Code", logo: "/placeholder.svg?height=40&width=40" },
+      { name: "GitHub", logo: "/logo/github.png?height=40&width=40" },
+      { name: "Postman", logo: "/logo/postman.webp?height=40&width=40" },
+      { name: "Google Sheets", logo: "/logo/googlesheet.png?height=40&width=40" },
+      { name: "VS Code", logo: "/logo/vscode.png?height=40&width=40" },
     ],
   },
   {
@@ -94,10 +95,10 @@ const toolCategories = [
     icon: Sparkles,
     color: "orange",
     tools: [
-      { name: "AI/ML Testing", logo: "/placeholder.svg?height=40&width=40" },
-      { name: "ChatGPT", logo: "/placeholder.svg?height=40&width=40" },
-      { name: "Data Analysis", logo: "/placeholder.svg?height=40&width=40" },
-      { name: "Test Analytics", logo: "/placeholder.svg?height=40&width=40" },
+      { name: "AI/ML Testing", logo: "/logo/ai.png?height=40&width=40" },
+      { name: "ChatGPT", logo: "/logo/chatgpt.png?height=40&width=40" },
+      { name: "Data Analysis", logo: "/logo/dataanalysist.png?height=40&width=40" },
+      { name: "Test Analytics", logo: "/logo/test.png?height=40&width=40" },
     ],
   },
 ]
@@ -289,7 +290,8 @@ export default function Portfolio() {
                   className="absolute inset-0 bg-gradient-to-br from-blue-400 to-purple-500 opacity-0"
                   whileHover={{ opacity: 1 }}
                 />
-                <span className="relative z-10">KT</span>
+                <img src='/logo/profile.jpg' className="object-cover fill aspect-square"/>
+                {/* <span className="relative z-10">KT</span> */}
               </motion.div>
               <motion.div
                 className="absolute -inset-2 border-2 border-blue-300 rounded-full"
@@ -324,13 +326,12 @@ export default function Portfolio() {
             </motion.div>
 
             <motion.p
-              className="text-lg text-slate-600 mb-8 max-w-3xl mx-auto leading-relaxed"
+              className="text-lg text-slate-600 mb-8 max-w-3xl mx-auto leading-relaxed text-center"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6, duration: 0.8 }}
             >
-              Detail-oriented QA Engineer with hands-on experience in testing SaaS products, interactive dashboards,
-              CRM, and AI/ML systems. Passionate about leveraging cutting-edge AI tools to optimize testing workflows.
+              Detail-oriented QA Engineer with hands-on experience in testing SaaS product, interactive dashboards, CRM, and AL/ML and complex software systems. Skilled in automation testing using tools like Selenium, Cypress, and Python in a Hybrid POM framework integrated with Pytest. Passionate about leveraging cutting-edge AI tools to optimize testing workflows and ensure software quality.
             </motion.p>
 
             <motion.div
@@ -343,10 +344,10 @@ export default function Portfolio() {
                 whileHover={{ scale: 1.05, boxShadow: "0 10px 25px rgba(59, 130, 246, 0.3)" }}
                 whileTap={{ scale: 0.95 }}
               >
-                <Button size="lg" className="bg-blue-600 hover:bg-blue-700 group">
+                <a href="/Kishor_Tiwari_CV.pdf" target="_blank"  className="bg-blue-600 hover:bg-blue-700 group flex items-center justify-between h-11 rounded-md px-8 text-white">
                   <Download className="mr-2 h-4 w-4 group-hover:animate-bounce" />
                   Download CV
-                </Button>
+                </a>
               </motion.div>
               <motion.div
                 whileHover={{ scale: 1.05, boxShadow: "0 10px 25px rgba(0, 0, 0, 0.1)" }}
@@ -383,10 +384,10 @@ export default function Portfolio() {
               transition={{ delay: 1.2, duration: 0.8 }}
             >
               {[
-                { icon: Linkedin, color: "bg-blue-600", href: "https://linkedin.com/" },
-                { icon: Facebook, color: "bg-blue-500", href: "https://facebook.com/" },
-                { icon: MessageCircle, color: "bg-green-500", href: "https://wa.me/9861681314" },
-                { icon: Github, color: "bg-slate-800", href: "https://github.com/" },
+                { icon: Linkedin, color: "bg-blue-600", href: "https://www.linkedin.com/in/kishor-tiwari-aa848517a/" },
+                { icon: Facebook, color: "bg-blue-500", href: "https://www.facebook.com/kishor.tiwari.737/" },
+                { icon: MessageCircle, color: "bg-green-500", href: "https://web.whatsapp.com/" },
+                { icon: Github, color: "bg-slate-800", href: "https://github.com/Itsmekishortiwari "},
               ].map((social, index) => (
                 <motion.a
                   key={index}
@@ -553,7 +554,7 @@ export default function Portfolio() {
                         whileHover={{ scale: 1.1, rotate: 5 }}
                         transition={{ type: "spring", stiffness: 300 }}
                       >
-                        <category.icon className="h-8 w-8 text-white" />
+                        <category.icon className={`h-8 w-8 text-slate-600`} />
                       </motion.div>
                       <CardTitle className="text-lg font-semibold text-slate-800">{category.title}</CardTitle>
                     </CardHeader>
@@ -626,11 +627,14 @@ export default function Portfolio() {
                     status: "current",
                     color: "blue",
                     achievements: [
-                      "Worked on more than 15 projects including National and International clients",
-                      "Tested AI-driven chatbots, live chat systems, and interactive dashboards",
-                      "Automated repetitive test cases using Selenium and Python",
-                      "Conducted load and performance testing using JMeter",
-                      "Acted as QA lead, mentoring interns and managing testing processes",
+                        "Successfully contributed to 15+ projects involving both national and international clients, delivering high-quality QA support.",
+                       " Tested AI-powered chatbots, live chat systems, and dynamic dashboards to ensure seamless user experience and system functionality.",
+                        "Automated regression and functional test cases using Selenium with Python in a Hybrid POM framework integrated with Pytest, improving test efficiency and coverage.",
+                        "Performed load and performance testing using Apache JMeter, ensuring application stability under peak conditions.",
+                       " Acted as a QA Lead, mentoring interns, guiding junior testers, and overseeing the end-to-end QA process.",
+                        "Worked collaboratively with developers to identify, log, and resolve critical software defects, ensuring timely releases.",
+                       " Created and maintained detailed test cases, bug reports, feature validation documents, and user manuals for clients and internal use.",
+
                     ],
                   },
                   {
@@ -741,15 +745,13 @@ export default function Portfolio() {
                 {
                   degree: "Bachelor of Information Management",
                   institution: "Shanker Dev Campus",
-                  gpa: "3.41",
                   color: "blue",
                   icon: GraduationCap,
                 },
                 {
                   degree: "Management",
                   institution: "Oxford English Boarding School",
-                  gpa: "2.56",
-                  color: "green",
+                  color: "blue",
                   icon: Building,
                 },
               ].map((edu, index) => (
@@ -842,7 +844,7 @@ export default function Portfolio() {
                       {[
                         { icon: Mail, label: "Email", value: "itsmekishortiwari@gmail.com", color: "blue" },
                         { icon: Phone, label: "Phone", value: "9861681314", color: "green" },
-                        { icon: MapPin, label: "Location", value: "Shorakhutte-16, Kathmandu", color: "red" },
+                        { icon: Map, label: "Location", value: "Shorakhutte-16, Kathmandu", color: "blue" },
                         {
                           icon: ExternalLink,
                           label: "Social Profiles",
@@ -940,12 +942,17 @@ export default function Portfolio() {
               animate={{ rotate: [0, 360] }}
               transition={{ duration: 20, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
             >
-              <TestTube className="h-8 w-8 mx-auto text-blue-400" />
+              <img
+              src='/logo/footer.jpg'
+              width={50}
+              height={50}
+              />
+              {/* <TestTube className="h-8 w-8 mx-auto text-blue-400" /> */}
             </motion.div>
             <h3 className="text-xl font-bold mb-2">Kishor Tiwari</h3>
             <p className="text-slate-400 mb-4">Quality Assurance Engineer</p>
 
-            <motion.div
+            {/* <motion.div
               className="flex justify-center space-x-4 mb-6"
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -971,7 +978,7 @@ export default function Portfolio() {
                   <social.icon className="h-5 w-5" />
                 </motion.a>
               ))}
-            </motion.div>
+            </motion.div> */}
 
             <motion.p className="text-slate-500 text-sm" whileHover={{ scale: 1.05 }}>
               © 2024 Kishor Tiwari. All rights reserved. Built with passion for quality.
