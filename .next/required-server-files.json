@@ -96,7 +96,7 @@
         "transform": "lodash/{{member}}"
       }
     },
-    "outputFileTracingRoot": "C:\\Users\\Abdti\\Desktop\\qa-portfolio",
+    "outputFileTracingRoot": "C:\\Users\\lenovo\\OneDrive\\Desktop\\kishwor\\portfolio",
     "experimental": {
       "allowedDevOrigins": [],
       "nodeMiddleware": false,
@@ -154,7 +154,7 @@
       "middlewarePrefetch": "flexible",
       "optimisticClientCache": true,
       "manualClientBasePath": false,
-      "cpus": 11,
+      "cpus": 3,
       "memoryBasedWorkersCount": false,
       "imgOptConcurrency": null,
       "imgOptTimeoutInSeconds": 7,
@@ -175,7 +175,7 @@
       "forceSwcTransforms": false,
       "largePageDataBytes": 128000,
       "turbo": {
-        "root": "C:\\Users\\Abdti\\Desktop\\qa-portfolio"
+        "root": "C:\\Users\\lenovo\\OneDrive\\Desktop\\kishwor\\portfolio"
       },
       "typedRoutes": false,
       "typedEnv": false,
@@ -281,7 +281,7 @@
     "bundlePagesRouterDependencies": false,
     "configFileName": "next.config.mjs"
   },
-  "appDir": "C:\\Users\\Abdti\\Desktop\\qa-portfolio",
+  "appDir": "C:\\Users\\lenovo\\OneDrive\\Desktop\\kishwor\\portfolio",
   "relativeAppDir": "",
   "files": [
     ".next\\routes-manifest.json",

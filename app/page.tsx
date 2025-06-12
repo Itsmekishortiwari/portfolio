@@ -1,10 +1,16 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import { motion, useScroll, useTransform } from "framer-motion"
-import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { useState, useEffect } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import {
   Mail,
   Phone,
@@ -28,13 +34,13 @@ import {
   MessageCircle,
   ExternalLink,
   Map,
-} from "lucide-react"
+} from "lucide-react";
 
 const fadeInUp = {
   initial: { opacity: 0, y: 60 },
   animate: { opacity: 1, y: 0 },
   transition: { duration: 0.6 },
-}
+};
 
 const staggerContainer = {
   animate: {
@@ -42,7 +48,7 @@ const staggerContainer = {
       staggerChildren: 0.1,
     },
   },
-}
+};
 
 const floatingAnimation = {
   animate: {
@@ -53,7 +59,7 @@ const floatingAnimation = {
       ease: "easeInOut",
     },
   },
-}
+};
 
 // Tool data with logos
 const toolCategories = [
@@ -63,8 +69,14 @@ const toolCategories = [
     color: "black",
     tools: [
       { name: "Manual Testing", logo: "logo/manual.png?height=40&width=40" },
-      { name: "Automation Testing", logo: "/logo/automation_testing.png?height=40&width=40" },
-      { name: "Performance Testing", logo: "/logo/performance.png?height=40&width=40" },
+      {
+        name: "Automation Testing",
+        logo: "/logo/automation_testing.png?height=40&width=40",
+      },
+      {
+        name: "Performance Testing",
+        logo: "/logo/performance.png?height=40&width=40",
+      },
       { name: "API Testing", logo: "/logo/api.png?height=50&width=50" },
     ],
   },
@@ -86,7 +98,10 @@ const toolCategories = [
     tools: [
       { name: "GitHub", logo: "/logo/github.png?height=40&width=40" },
       { name: "Postman", logo: "/logo/postman.webp?height=40&width=40" },
-      { name: "Google Sheets", logo: "/logo/googlesheet.png?height=40&width=40" },
+      {
+        name: "Google Sheets",
+        logo: "/logo/googlesheet.png?height=40&width=40",
+      },
       { name: "VS Code", logo: "/logo/vscode.png?height=40&width=40" },
     ],
   },
@@ -97,11 +112,14 @@ const toolCategories = [
     tools: [
       { name: "AI/ML Testing", logo: "/logo/ai.png?height=40&width=40" },
       { name: "ChatGPT", logo: "/logo/chatgpt.png?height=40&width=40" },
-      { name: "Data Analysis", logo: "/logo/dataanalysist.png?height=40&width=40" },
+      {
+        name: "Data Analysis",
+        logo: "/logo/dataanalysist.png?height=40&width=40",
+      },
       { name: "Test Analytics", logo: "/logo/test.png?height=40&width=40" },
     ],
   },
-]
+];
 
 // Floating particles component
 const FloatingParticles = () => {
@@ -127,49 +145,56 @@ const FloatingParticles = () => {
         />
       ))}
     </div>
-  )
-}
+  );
+};
 
 export default function Portfolio() {
-  const [activeSection, setActiveSection] = useState("hero")
-  const [isLoading, setIsLoading] = useState(true)
-  const { scrollYProgress } = useScroll()
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"])
+  const [activeSection, setActiveSection] = useState("hero");
+  const [isLoading, setIsLoading] = useState(true);
+  const { scrollYProgress } = useScroll();
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
 
   useEffect(() => {
-    const timer = setTimeout(() => setIsLoading(false), 2000)
-    return () => clearTimeout(timer)
-  }, [])
+    const timer = setTimeout(() => setIsLoading(false), 2000);
+    return () => clearTimeout(timer);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ["hero", "about", "skills", "experience", "education", "contact"]
-      const scrollPosition = window.scrollY + 100
+      const sections = [
+        "hero",
+        "about",
+        "skills",
+        "experience",
+        "education",
+        "contact",
+      ];
+      const scrollPosition = window.scrollY + 100;
 
       for (const section of sections) {
-        const element = document.getElementById(section)
+        const element = document.getElementById(section);
         if (element) {
-          const offsetTop = element.offsetTop
-          const offsetBottom = offsetTop + element.offsetHeight
+          const offsetTop = element.offsetTop;
+          const offsetBottom = offsetTop + element.offsetHeight;
 
           if (scrollPosition >= offsetTop && scrollPosition < offsetBottom) {
-            setActiveSection(section)
-            break
+            setActiveSection(section);
+            break;
           }
         }
       }
-    }
+    };
 
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId)
+    const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({ behavior: "smooth" })
+      element.scrollIntoView({ behavior: "smooth" });
     }
-  }
+  };
 
   // Loading screen
   if (isLoading) {
@@ -184,7 +209,11 @@ export default function Portfolio() {
           <motion.div
             className="w-20 h-20 border-4 border-white/30 border-t-white rounded-full mx-auto mb-4"
             animate={{ rotate: 360 }}
-            transition={{ duration: 1, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
+            transition={{
+              duration: 1,
+              repeat: Number.POSITIVE_INFINITY,
+              ease: "linear",
+            }}
           />
           <motion.h2
             className="text-2xl font-bold"
@@ -204,7 +233,7 @@ export default function Portfolio() {
           </motion.p>
         </motion.div>
       </div>
-    )
+    );
   }
 
   return (
@@ -235,27 +264,31 @@ export default function Portfolio() {
               Kishor Tiwari
             </motion.div>
             <div className="hidden md:flex space-x-8">
-              {["About", "Skills", "Experience", "Education", "Contact"].map((item, index) => (
-                <motion.button
-                  key={item}
-                  onClick={() => scrollToSection(item.toLowerCase())}
-                  className={`text-sm font-medium transition-all duration-300 hover:text-blue-600 relative ${
-                    activeSection === item.toLowerCase() ? "text-blue-600" : "text-slate-600"
-                  }`}
-                  initial={{ opacity: 0, y: -20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                  whileHover={{ scale: 1.1 }}
-                >
-                  {item}
-                  {activeSection === item.toLowerCase() && (
-                    <motion.div
-                      className="absolute -bottom-1 left-0 right-0 h-0.5 bg-blue-600"
-                      layoutId="activeSection"
-                    />
-                  )}
-                </motion.button>
-              ))}
+              {["About", "Skills", "Experience", "Education", "Contact"].map(
+                (item, index) => (
+                  <motion.button
+                    key={item}
+                    onClick={() => scrollToSection(item.toLowerCase())}
+                    className={`text-sm font-medium transition-all duration-300 hover:text-blue-600 relative ${
+                      activeSection === item.toLowerCase()
+                        ? "text-blue-600"
+                        : "text-slate-600"
+                    }`}
+                    initial={{ opacity: 0, y: -20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: index * 0.1 }}
+                    whileHover={{ scale: 1.1 }}
+                  >
+                    {item}
+                    {activeSection === item.toLowerCase() && (
+                      <motion.div
+                        className="absolute -bottom-1 left-0 right-0 h-0.5 bg-blue-600"
+                        layoutId="activeSection"
+                      />
+                    )}
+                  </motion.button>
+                )
+              )}
             </div>
           </div>
         </div>
@@ -290,13 +323,20 @@ export default function Portfolio() {
                   className="absolute inset-0 bg-gradient-to-br from-blue-400 to-purple-500 opacity-0"
                   whileHover={{ opacity: 1 }}
                 />
-                <img src='/logo/profile.jpg' className="object-cover fill aspect-square"/>
+                <img
+                  src="/logo/profile.jpg"
+                  className="object-cover fill aspect-square"
+                />
                 {/* <span className="relative z-10">KT</span> */}
               </motion.div>
               <motion.div
                 className="absolute -inset-2 border-2 border-blue-300 rounded-full"
                 animate={{ rotate: 360 }}
-                transition={{ duration: 8, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
+                transition={{
+                  duration: 8,
+                  repeat: Number.POSITIVE_INFINITY,
+                  ease: "linear",
+                }}
               />
             </motion.div>
 
@@ -315,7 +355,9 @@ export default function Portfolio() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.8 }}
             >
-              <h2 className="text-2xl md:text-3xl text-blue-600 mb-6 font-medium">Quality Assurance Engineer</h2>
+              <h2 className="text-2xl md:text-3xl text-blue-600 mb-6 font-medium">
+                Quality Assurance Engineer
+              </h2>
               <motion.div
                 className="absolute -top-2 -right-2"
                 animate={{ rotate: [0, 10, -10, 0] }}
@@ -331,7 +373,12 @@ export default function Portfolio() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6, duration: 0.8 }}
             >
-              Detail-oriented QA Engineer with hands-on experience in testing SaaS product, interactive dashboards, CRM, and AL/ML and complex software systems. Skilled in automation testing using tools like Selenium, Cypress, and Python in a Hybrid POM framework integrated with Pytest. Passionate about leveraging cutting-edge AI tools to optimize testing workflows and ensure software quality.
+              Detail-oriented QA Engineer with hands-on experience in testing
+              SaaS product, interactive dashboards, CRM, and AL/ML and complex
+              software systems. Skilled in automation testing using tools like
+              Selenium, Cypress, and Python in a Hybrid POM framework integrated
+              with Pytest. Passionate about leveraging cutting-edge AI tools to
+              optimize testing workflows and ensure software quality.
             </motion.p>
 
             <motion.div
@@ -341,19 +388,34 @@ export default function Portfolio() {
               transition={{ delay: 0.8, duration: 0.8 }}
             >
               <motion.div
-                whileHover={{ scale: 1.05, boxShadow: "0 10px 25px rgba(59, 130, 246, 0.3)" }}
+                whileHover={{
+                  scale: 1.05,
+                  boxShadow: "0 10px 25px rgba(59, 130, 246, 0.3)",
+                }}
                 whileTap={{ scale: 0.95 }}
               >
-                <a href="/Kishor_Tiwari_CV.pdf" target="_blank"  className="bg-blue-600 hover:bg-blue-700 group flex items-center justify-between h-11 rounded-md px-8 text-white">
+                <a
+                  href="/Kishor_Tiwari_CV.pdf"
+                  target="_blank"
+                  className="bg-blue-600 hover:bg-blue-700 group flex items-center justify-between h-11 rounded-md px-8 text-white"
+                >
                   <Download className="mr-2 h-4 w-4 group-hover:animate-bounce" />
                   Download CV
                 </a>
               </motion.div>
               <motion.div
-                whileHover={{ scale: 1.05, boxShadow: "0 10px 25px rgba(0, 0, 0, 0.1)" }}
+                whileHover={{
+                  scale: 1.05,
+                  boxShadow: "0 10px 25px rgba(0, 0, 0, 0.1)",
+                }}
                 whileTap={{ scale: 0.95 }}
               >
-                <Button variant="outline" size="lg" onClick={() => scrollToSection("contact")} className="group">
+                <Button
+                  variant="outline"
+                  size="lg"
+                  onClick={() => scrollToSection("contact")}
+                  className="group"
+                >
                   <Mail className="mr-2 h-4 w-4 group-hover:animate-pulse" />
                   Get In Touch
                   <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
@@ -367,11 +429,17 @@ export default function Portfolio() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1, duration: 0.8 }}
             >
-              <motion.div whileHover={{ scale: 1.1, y: -2 }} className="flex items-center text-slate-600">
+              <motion.div
+                whileHover={{ scale: 1.1, y: -2 }}
+                className="flex items-center text-slate-600"
+              >
                 <MapPin className="h-4 w-4 mr-2 text-red-500" />
                 <span>Kathmandu, Nepal</span>
               </motion.div>
-              <motion.div whileHover={{ scale: 1.1, y: -2 }} className="flex items-center text-slate-600">
+              <motion.div
+                whileHover={{ scale: 1.1, y: -2 }}
+                className="flex items-center text-slate-600"
+              >
                 <Phone className="h-4 w-4 mr-2 text-green-500" />
                 <span>9861681314</span>
               </motion.div>
@@ -384,10 +452,26 @@ export default function Portfolio() {
               transition={{ delay: 1.2, duration: 0.8 }}
             >
               {[
-                { icon: Linkedin, color: "bg-blue-600", href: "https://www.linkedin.com/in/kishor-tiwari-aa848517a/" },
-                { icon: Facebook, color: "bg-blue-500", href: "https://www.facebook.com/kishor.tiwari.737/" },
-                { icon: MessageCircle, color: "bg-green-500", href: "https://web.whatsapp.com/" },
-                { icon: Github, color: "bg-slate-800", href: "https://github.com/Itsmekishortiwari "},
+                {
+                  icon: Linkedin,
+                  color: "bg-blue-600",
+                  href: "https://www.linkedin.com/in/kishor-tiwari-aa848517a/",
+                },
+                {
+                  icon: Facebook,
+                  color: "bg-blue-500",
+                  href: "https://www.facebook.com/kishor.tiwari.737/",
+                },
+                {
+                  icon: MessageCircle,
+                  color: "bg-green-500",
+                  href: "https://web.whatsapp.com/",
+                },
+                {
+                  icon: Github,
+                  color: "bg-slate-800",
+                  href: "https://github.com/Itsmekishortiwari ",
+                },
               ].map((social, index) => (
                 <motion.a
                   key={index}
@@ -441,7 +525,9 @@ export default function Portfolio() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
               >
-                <h3 className="text-2xl font-semibold text-slate-800 mb-4">Professional Profile</h3>
+                <h3 className="text-2xl font-semibold text-slate-800 mb-4">
+                  Professional Profile
+                </h3>
                 <motion.p
                   className="text-slate-600 leading-relaxed mb-6"
                   initial={{ opacity: 0 }}
@@ -449,9 +535,11 @@ export default function Portfolio() {
                   viewport={{ once: true }}
                   transition={{ delay: 0.2 }}
                 >
-                  I'm a passionate Quality Assurance Engineer with extensive experience in testing complex software
-                  systems, SaaS products, and AI/ML applications. My expertise spans both manual and automated testing,
-                  with a strong focus on leveraging modern tools and AI to optimize testing workflows.
+                  I'm a passionate Quality Assurance Engineer with extensive
+                  experience in testing complex software systems, SaaS products,
+                  and AI/ML applications. My expertise spans both manual and
+                  automated testing, with a strong focus on leveraging modern
+                  tools and AI to optimize testing workflows.
                 </motion.p>
                 <motion.p
                   className="text-slate-600 leading-relaxed"
@@ -460,8 +548,10 @@ export default function Portfolio() {
                   viewport={{ once: true }}
                   transition={{ delay: 0.4 }}
                 >
-                  With hands-on experience across 15+ projects for national and international clients, I bring strong
-                  problem-solving abilities and a commitment to delivering reliable, high-performing solutions.
+                  With hands-on experience across 15+ projects for national and
+                  international clients, I bring strong problem-solving
+                  abilities and a commitment to delivering reliable,
+                  high-performing solutions.
                 </motion.p>
               </motion.div>
               <motion.div
@@ -473,10 +563,30 @@ export default function Portfolio() {
                 variants={staggerContainer}
               >
                 {[
-                  { icon: TestTube, value: "15+", label: "Projects Tested", color: "blue" },
-                  { icon: Code, value: "AI/ML", label: "Testing Expert", color: "green" },
-                  { icon: Users, value: "Team", label: "Leadership", color: "purple" },
-                  { icon: Zap, value: "Automation", label: "Specialist", color: "orange" },
+                  {
+                    icon: TestTube,
+                    value: "15+",
+                    label: "Projects Tested",
+                    color: "blue",
+                  },
+                  {
+                    icon: Code,
+                    value: "AI/ML",
+                    label: "Testing Expert",
+                    color: "green",
+                  },
+                  {
+                    icon: Users,
+                    value: "Team",
+                    label: "Leadership",
+                    color: "purple",
+                  },
+                  {
+                    icon: Zap,
+                    value: "Automation",
+                    label: "Specialist",
+                    color: "orange",
+                  },
                 ].map((item, index) => (
                   <motion.div
                     key={index}
@@ -491,9 +601,13 @@ export default function Portfolio() {
                           whileHover={{ rotate: 360 }}
                           transition={{ duration: 0.5 }}
                         >
-                          <item.icon className={`h-6 w-6 text-${item.color}-600`} />
+                          <item.icon
+                            className={`h-6 w-6 text-${item.color}-600`}
+                          />
                         </motion.div>
-                        <h4 className="font-semibold text-slate-800 text-lg">{item.value}</h4>
+                        <h4 className="font-semibold text-slate-800 text-lg">
+                          {item.value}
+                        </h4>
                         <p className="text-sm text-slate-600">{item.label}</p>
                       </CardContent>
                     </Card>
@@ -506,7 +620,10 @@ export default function Portfolio() {
       </section>
 
       {/* Enhanced Skills Section */}
-      <section id="skills" className="py-16 px-6 bg-gradient-to-br from-slate-50 to-blue-50 relative">
+      <section
+        id="skills"
+        className="py-16 px-6 bg-gradient-to-br from-slate-50 to-blue-50 relative"
+      >
         <div className="container mx-auto max-w-6xl">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -529,7 +646,8 @@ export default function Portfolio() {
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
             >
-              A comprehensive toolkit for ensuring software quality across all platforms and technologies
+              A comprehensive toolkit for ensuring software quality across all
+              platforms and technologies
             </motion.p>
 
             <motion.div
@@ -556,7 +674,9 @@ export default function Portfolio() {
                       >
                         <category.icon className={`h-8 w-8 text-slate-600`} />
                       </motion.div>
-                      <CardTitle className="text-lg font-semibold text-slate-800">{category.title}</CardTitle>
+                      <CardTitle className="text-lg font-semibold text-slate-800">
+                        {category.title}
+                      </CardTitle>
                     </CardHeader>
                     <CardContent className="pt-0">
                       <div className="grid grid-cols-2 gap-3">
@@ -568,7 +688,9 @@ export default function Portfolio() {
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            transition={{ delay: categoryIndex * 0.1 + toolIndex * 0.05 }}
+                            transition={{
+                              delay: categoryIndex * 0.1 + toolIndex * 0.05,
+                            }}
                           >
                             <motion.div
                               className="w-10 h-10 mb-2 rounded-lg bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center overflow-hidden"
@@ -580,11 +702,13 @@ export default function Portfolio() {
                                 alt={tool.name}
                                 className="w-6 h-6 object-contain"
                                 onError={(e) => {
-                                  const target = e.target as HTMLImageElement
-                                  target.style.display = "none"
-                                  const parent = target.parentElement
+                                  const target = e.target as HTMLImageElement;
+                                  target.style.display = "none";
+                                  const parent = target.parentElement;
                                   if (parent) {
-                                    parent.innerHTML = `<div class="w-6 h-6 bg-gradient-to-br from-blue-400 to-purple-500 rounded text-white text-xs flex items-center justify-center font-bold">${tool.name.charAt(0)}</div>`
+                                    parent.innerHTML = `<div class="w-6 h-6 bg-gradient-to-br from-blue-400 to-purple-500 rounded text-white text-xs flex items-center justify-center font-bold">${tool.name.charAt(
+                                      0
+                                    )}</div>`;
                                   }
                                 }}
                               />
@@ -613,7 +737,9 @@ export default function Portfolio() {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-3xl font-bold text-center text-slate-800 mb-12">Professional Journey</h2>
+            <h2 className="text-3xl font-bold text-center text-slate-800 mb-12">
+              Professional Journey
+            </h2>
             <div className="relative">
               {/* Timeline line */}
               <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-500 to-purple-600" />
@@ -627,14 +753,13 @@ export default function Portfolio() {
                     status: "current",
                     color: "blue",
                     achievements: [
-                        "Successfully contributed to 15+ projects involving both national and international clients, delivering high-quality QA support.",
-                       " Tested AI-powered chatbots, live chat systems, and dynamic dashboards to ensure seamless user experience and system functionality.",
-                        "Automated regression and functional test cases using Selenium with Python in a Hybrid POM framework integrated with Pytest, improving test efficiency and coverage.",
-                        "Performed load and performance testing using Apache JMeter, ensuring application stability under peak conditions.",
-                       " Acted as a QA Lead, mentoring interns, guiding junior testers, and overseeing the end-to-end QA process.",
-                        "Worked collaboratively with developers to identify, log, and resolve critical software defects, ensuring timely releases.",
-                       " Created and maintained detailed test cases, bug reports, feature validation documents, and user manuals for clients and internal use.",
-
+                      "Successfully contributed to 15+ projects involving both national and international clients, delivering high-quality QA support.",
+                      " Tested AI-powered chatbots, live chat systems, and dynamic dashboards to ensure seamless user experience and system functionality.",
+                      "Automated regression and functional test cases using Selenium with Python in a Hybrid POM framework integrated with Pytest, improving test efficiency and coverage.",
+                      "Performed load and performance testing using Apache JMeter, ensuring application stability under peak conditions.",
+                      " Acted as a QA Lead, mentoring interns, guiding junior testers, and overseeing the end-to-end QA process.",
+                      "Worked collaboratively with developers to identify, log, and resolve critical software defects, ensuring timely releases.",
+                      " Created and maintained detailed test cases, bug reports, feature validation documents, and user manuals for clients and internal use.",
                     ],
                   },
                   {
@@ -665,10 +790,17 @@ export default function Portfolio() {
                       initial={{ scale: 0 }}
                       whileInView={{ scale: 1 }}
                       viewport={{ once: true }}
-                      transition={{ delay: index * 0.2 + 0.3, type: "spring", stiffness: 300 }}
+                      transition={{
+                        delay: index * 0.2 + 0.3,
+                        type: "spring",
+                        stiffness: 300,
+                      }}
                     />
 
-                    <motion.div whileHover={{ scale: 1.02, y: -5 }} transition={{ type: "spring", stiffness: 300 }}>
+                    <motion.div
+                      whileHover={{ scale: 1.02, y: -5 }}
+                      transition={{ type: "spring", stiffness: 300 }}
+                    >
                       <Card
                         className={`border-l-4 border-l-${job.color}-500 shadow-lg hover:shadow-xl transition-all duration-300`}
                       >
@@ -681,17 +813,25 @@ export default function Portfolio() {
                                   <motion.div
                                     className="px-2 py-1 bg-green-100 text-green-700 text-xs rounded-full"
                                     animate={{ scale: [1, 1.1, 1] }}
-                                    transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY }}
+                                    transition={{
+                                      duration: 2,
+                                      repeat: Number.POSITIVE_INFINITY,
+                                    }}
                                   >
                                     Current
                                   </motion.div>
                                 )}
                               </CardTitle>
-                              <CardDescription className={`text-lg font-medium text-${job.color}-600`}>
+                              <CardDescription
+                                className={`text-lg font-medium text-${job.color}-600`}
+                              >
                                 {job.company}
                               </CardDescription>
                             </div>
-                            <Badge variant="outline" className={`text-${job.color}-600 border-${job.color}-600`}>
+                            <Badge
+                              variant="outline"
+                              className={`text-${job.color}-600 border-${job.color}-600`}
+                            >
                               <Calendar className="h-3 w-3 mr-1" />
                               {job.period}
                             </Badge>
@@ -699,25 +839,34 @@ export default function Portfolio() {
                         </CardHeader>
                         <CardContent>
                           <ul className="space-y-3">
-                            {job.achievements.map((achievement, achievementIndex) => (
-                              <motion.li
-                                key={achievementIndex}
-                                className="flex items-start text-slate-600"
-                                initial={{ opacity: 0, x: -20 }}
-                                whileInView={{ opacity: 1, x: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: index * 0.2 + achievementIndex * 0.1 }}
-                              >
-                                <motion.span
-                                  className={`w-2 h-2 bg-${job.color}-500 rounded-full mt-2 mr-3 flex-shrink-0`}
-                                  initial={{ scale: 0 }}
-                                  whileInView={{ scale: 1 }}
+                            {job.achievements.map(
+                              (achievement, achievementIndex) => (
+                                <motion.li
+                                  key={achievementIndex}
+                                  className="flex items-start text-slate-600"
+                                  initial={{ opacity: 0, x: -20 }}
+                                  whileInView={{ opacity: 1, x: 0 }}
                                   viewport={{ once: true }}
-                                  transition={{ delay: index * 0.2 + achievementIndex * 0.1 + 0.2 }}
-                                />
-                                {achievement}
-                              </motion.li>
-                            ))}
+                                  transition={{
+                                    delay: index * 0.2 + achievementIndex * 0.1,
+                                  }}
+                                >
+                                  <motion.span
+                                    className={`w-2 h-2 bg-${job.color}-500 rounded-full mt-2 mr-3 flex-shrink-0`}
+                                    initial={{ scale: 0 }}
+                                    whileInView={{ scale: 1 }}
+                                    viewport={{ once: true }}
+                                    transition={{
+                                      delay:
+                                        index * 0.2 +
+                                        achievementIndex * 0.1 +
+                                        0.2,
+                                    }}
+                                  />
+                                  {achievement}
+                                </motion.li>
+                              )
+                            )}
                           </ul>
                         </CardContent>
                       </Card>
@@ -731,7 +880,10 @@ export default function Portfolio() {
       </section>
 
       {/* Enhanced Education Section */}
-      <section id="education" className="py-16 px-6 bg-gradient-to-br from-slate-50 to-blue-50">
+      <section
+        id="education"
+        className="py-16 px-6 bg-gradient-to-br from-slate-50 to-blue-50"
+      >
         <div className="container mx-auto max-w-6xl">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -739,7 +891,9 @@ export default function Portfolio() {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-3xl font-bold text-center text-slate-800 mb-12">Education</h2>
+            <h2 className="text-3xl font-bold text-center text-slate-800 mb-12">
+              Education
+            </h2>
             <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
               {[
                 {
@@ -772,7 +926,9 @@ export default function Portfolio() {
                       >
                         <edu.icon className="h-8 w-8 text-white" />
                       </motion.div>
-                      <CardTitle className="text-xl text-slate-800">{edu.degree}</CardTitle>
+                      <CardTitle className="text-xl text-slate-800">
+                        {edu.degree}
+                      </CardTitle>
                       <CardDescription className="text-lg font-medium text-slate-600">
                         {edu.institution}
                       </CardDescription>
@@ -787,7 +943,10 @@ export default function Portfolio() {
                         </Badge> */}
                         <motion.div
                           animate={{ rotate: [0, 10, -10, 0] }}
-                          transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY }}
+                          transition={{
+                            duration: 2,
+                            repeat: Number.POSITIVE_INFINITY,
+                          }}
                         >
                           <Award className="h-6 w-6 text-yellow-500" />
                         </motion.div>
@@ -810,7 +969,9 @@ export default function Portfolio() {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-3xl font-bold text-center text-slate-800 mb-12">Let's Connect</h2>
+            <h2 className="text-3xl font-bold text-center text-slate-800 mb-12">
+              Let's Connect
+            </h2>
             <div className="max-w-4xl mx-auto">
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
@@ -836,25 +997,57 @@ export default function Portfolio() {
                       viewport={{ once: true }}
                       transition={{ delay: 0.4 }}
                     >
-                      Let's discuss how I can help you deliver reliable, high-performing software solutions
+                      Let's discuss how I can help you deliver reliable,
+                      high-performing software solutions
                     </motion.p>
                   </div>
                   <CardContent className="p-8">
                     <div className="grid md:grid-cols-2 gap-6">
                       {[
-                        { icon: Mail, label: "Email", value: "itsmekishortiwari@gmail.com", color: "blue" },
-                        { icon: Phone, label: "Phone", value: "9861681314", color: "green" },
-                        { icon: Map, label: "Location", value: "Shorakhutte-16, Kathmandu", color: "blue" },
+                        {
+                          icon: Mail,
+                          label: "Email",
+                          value: "itsmekishortiwari@gmail.com",
+                          color: "blue",
+                        },
+                        {
+                          icon: Phone,
+                          label: "Phone",
+                          value: "9861681314",
+                          color: "green",
+                        },
+                        {
+                          icon: Map,
+                          label: "Location",
+                          value: "Shorakhutte-16, Kathmandu",
+                          color: "blue",
+                        },
                         {
                           icon: ExternalLink,
                           label: "Social Profiles",
                           value: (
                             <div className="flex space-x-2 mt-1">
                               {[
-                                { icon: Linkedin, color: "bg-blue-600", href: "https://linkedin.com/" },
-                                { icon: Facebook, color: "bg-blue-500", href: "https://facebook.com/" },
-                                { icon: MessageCircle, color: "bg-green-500", href: "https://wa.me/9861681314" },
-                                { icon: Github, color: "bg-slate-800", href: "https://github.com/" },
+                                {
+                                  icon: Linkedin,
+                                  color: "bg-blue-600",
+                                  href: "https://linkedin.com/",
+                                },
+                                {
+                                  icon: Facebook,
+                                  color: "bg-blue-500",
+                                  href: "https://facebook.com/",
+                                },
+                                {
+                                  icon: MessageCircle,
+                                  color: "bg-green-500",
+                                  href: "https://wa.me/9861681314",
+                                },
+                                {
+                                  icon: Github,
+                                  color: "bg-slate-800",
+                                  href: "https://github.com/",
+                                },
                               ].map((social, idx) => (
                                 <motion.a
                                   key={idx}
@@ -890,7 +1083,9 @@ export default function Portfolio() {
                             <contact.icon className="h-6 w-6 text-white" />
                           </motion.div>
                           <div>
-                            <p className="font-semibold text-slate-800">{contact.label}</p>
+                            <p className="font-semibold text-slate-800">
+                              {contact.label}
+                            </p>
                             {typeof contact.value === "string" ? (
                               <p className="text-slate-600 group-hover:text-slate-800 transition-colors">
                                 {contact.value}
@@ -909,7 +1104,10 @@ export default function Portfolio() {
                       viewport={{ once: true }}
                       transition={{ delay: 0.5 }}
                     >
-                      <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                      <motion.div
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                      >
                         <Button
                           size="lg"
                           className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-3 text-lg group"
@@ -937,18 +1135,6 @@ export default function Portfolio() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <motion.div
-              className="mb-6"
-              animate={{ rotate: [0, 360] }}
-              transition={{ duration: 20, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
-            >
-              <img
-              src='/logo/footer.jpg'
-              width={50}
-              height={50}
-              />
-              {/* <TestTube className="h-8 w-8 mx-auto text-blue-400" /> */}
-            </motion.div>
             <h3 className="text-xl font-bold mb-2">Kishor Tiwari</h3>
             <p className="text-slate-400 mb-4">Quality Assurance Engineer</p>
 
@@ -980,12 +1166,16 @@ export default function Portfolio() {
               ))}
             </motion.div> */}
 
-            <motion.p className="text-slate-500 text-sm" whileHover={{ scale: 1.05 }}>
-              © 2024 Kishor Tiwari. All rights reserved. Built with passion for quality.
+            <motion.p
+              className="text-slate-500 text-sm"
+              whileHover={{ scale: 1.05 }}
+            >
+              © 2024 Kishor Tiwari. All rights reserved. Built with passion for
+              quality.
             </motion.p>
           </motion.div>
         </div>
       </footer>
     </div>
-  )
+  );
 }
